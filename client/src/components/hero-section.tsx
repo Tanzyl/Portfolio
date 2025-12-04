@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense, lazy } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail, FileText } from "lucide-react";
+
+const ThreeBackground = lazy(() => import("./three-background").then(m => ({ default: m.ThreeBackground })));
 
 function FloatingShape({ 
   className, 
@@ -19,7 +21,7 @@ function FloatingShape({
 
 function GridPattern() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
       <div
         className="absolute inset-0"
         style={{
@@ -37,7 +39,7 @@ function GridPattern() {
 function AnimatedOrb({ className, delay = 0 }: { className?: string; delay?: number }) {
   return (
     <div
-      className={`absolute rounded-full blur-3xl opacity-20 animate-float ${className}`}
+      className={`absolute rounded-full blur-3xl opacity-15 animate-float ${className}`}
       style={{ animationDelay: `${delay}s` }}
     />
   );
@@ -70,6 +72,10 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero"
       data-testid="section-hero"
     >
+      <Suspense fallback={null}>
+        <ThreeBackground />
+      </Suspense>
+      
       <GridPattern />
 
       <AnimatedOrb 
