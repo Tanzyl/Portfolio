@@ -376,11 +376,6 @@ body {
   padding-bottom: 5rem;
 }
 
-.three-background {
-  position: absolute;
-  inset: 0;
-  z-index: -10;
-}
 
 .grid-pattern {
   position: absolute;
