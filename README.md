@@ -7,7 +7,7 @@ A premium animated portfolio website converted to static HTML/CSS/JavaScript for
 - ✅ Fully static website (no build process required)
 - ✅ Dark/Light theme toggle with localStorage persistence
 - ✅ Smooth scroll navigation
-- ✅ Three.js 3D background effects
+- ✅ CSS-based animated backgrounds and effects
 - ✅ Animated counters and scroll-triggered animations
 - ✅ Responsive design for all devices
 - ✅ Glass-morphism UI elements
@@ -28,10 +28,19 @@ A premium animated portfolio website converted to static HTML/CSS/JavaScript for
    - Go to [vercel.com](https://vercel.com)
    - Click "New Project"
    - Import your repository
-   - Vercel will automatically detect it's a static site
+   - **Important**: In Project Settings, configure:
+     - **Framework Preset**: "Other" or leave blank
+     - **Build Command**: Leave empty (or set to `""`)
+     - **Output Directory**: `.` (current directory)
+     - **Install Command**: Leave empty
    - Click "Deploy"
 
 3. **That's it!** Your site will be live in seconds.
+
+**Note**: If Vercel detects it as an app, go to Project Settings → General → Override and set:
+- Build Command: (empty)
+- Output Directory: .
+- Install Command: (empty)
 
 ## File Structure
 
@@ -66,7 +75,6 @@ Then visit `http://localhost:8000`
 - **Colors**: Edit CSS variables in `styles.css` (lines 6-60 for light mode, 63-100 for dark mode)
 - **Content**: Edit text directly in `index.html`
 - **Animations**: Modify animation timings in `styles.css` keyframes section
-- **Three.js Background**: Customize in `script.js` `initThreeBackground()` function
 
 ## Browser Support
 
@@ -77,8 +85,8 @@ Then visit `http://localhost:8000`
 
 ## Notes
 
-- Three.js background requires ES modules support (all modern browsers)
 - Theme preference is saved in localStorage
 - All animations respect `prefers-reduced-motion` where applicable
 - Site is fully static and can be hosted anywhere (Vercel, Netlify, GitHub Pages, etc.)
+- No build process or dependencies required
 
